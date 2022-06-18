@@ -33,15 +33,15 @@ Las inspecciones son más beneficiosas cuando se realizan de forma diligente por
 
 >Adaptación: Si un inspector determina que uno o más aspectos de un proceso se desvían de los límites aceptables y que el producto resultante será inaceptable, el proceso o el material que está siendo procesado deben ajustarse. Dicho ajuste deberá realizarse cuanto antes para minimizar desviaciones mayores. 
 
-#Sprint Review/Retrospective
+# Sprint Review/Retrospective
 
-#Sprint Review
+# Sprint Review
 
 ● El equipo presenta la funcionalidad terminada al Product Owner y demás stakeholders.
 ● Los miembros del equipo responden preguntas de los stakeholders en relación a la demostración, y toman nota de los cambios propuestos.
 ● Al finalizar la presentación, los stakeholders dan su impresión acerca del producto, cambios deseados y prioridad de esos cambios.
 
-#Sprint Retrospective
+# Sprint Retrospective
 
 ● Provee una visión de qué está funcionando y qué no está funcionando.
 ● Se realiza al finalizar el sprint.
