@@ -1,0 +1,83 @@
+Creo la clave foranea en la tabla Perro, en relacion a la tabla dueño
+
+ALTER TABLE `perro` ADD CONSTRAINT `duenio_perro` FOREIGN KEY (`DNI_dueno`) REFERENCES `dueno`(`DNI`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+Creo la clave foranea en la tabla Historial, en relacion a la tabla perro:
+
+ALTER TABLE `historial` ADD CONSTRAINT `perro_historial` FOREIGN KEY (`id_Perro`) REFERENCES `perro`(`ID_Perro`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+1) Inserto el la tabla dueno, los datos del punto 1:
+
+INSERT INTO `dueno` (`DNI`, `Nombre`, `Apellido`, `Telefono`, `Direccion`) VALUES ('28957346', 'Juan', 'Perez', '4789689', 'Belgrano 101');
+
+Realizo la consulta: Si el DNI es mayor a 26000000, muestro el telefono:
+
+SELECT Telefono FROM `dueno` WHERE DNI > 26000000;
+
+
+2) Inserto el la tabla dueno, los datos del punto 2:
+
+INSERT INTO `dueno` (`DNI`, `Nombre`, `Apellido`, `Telefono`, `Direccion`) VALUES ('23546987', 'Maria', 'Perez', '4789689', 'Pueyrredon  811');
+
+Realizo la consulta:si el apellido es "Perez" mostrar Nombre, telefono y direccion
+
+SELECT Nombre,Telefono,Direccion FROM `dueno` WHERE Apellido = "Perez";
+
+
+3) Inserto el la tabla perro, los datos del punto 3:
+
+INSERT INTO `perro` (`ID_Perro`, `Nombre`, `Fecha_nac`, `Sexo`, `DNI_dueno`) VALUES ('13', 'Puppy', '2012-12-12', 'Macho', '23546987');
+
+Modificar la fecha de nacimiento por 13/12/2012:
+
+UPDATE `perro` SET `Fecha_nac` = '2012-12-13' WHERE `perro`.`ID_Perro` = 13;
+
+reemplazar “dni del dueño” por 28957346:
+
+UPDATE `dueno` SET `DNI` = '28957346' WHERE `dueno`.`DNI` = 123;
+
+
+
+
+4) Inserto el la tabla perro, los datos del punto 4:
+
+INSERT INTO `perro` (`ID_Perro`, `Nombre`, `Fecha_nac`, `Sexo`, `DNI_dueno`) VALUES ('14', 'Fido', '2012-12-12', 'Macho', '23546987');
+
+mostrar sus elementos por pantalla , comenzando desde el último hasta el primero:
+
+SELECT DNI_dueno,Sexo,Fecha_nac,Nombre,ID_Perro FROM `perro` WHERE ID_Perro = 14;
+
+
+
+5)Inserto el la tabla historial, los datos del punto 5:
+
+INSERT INTO `historial` (`id_historial`, `fecha`, `id_Perro`, `descripcion`, `monto`) VALUES (NULL, '2021-12-11', '13', 'Baño y corte de uñas', '2350');
+
+INSERT INTO `historial` (`id_historial`, `fecha`, `id_Perro`, `descripcion`, `monto`) VALUES (NULL, '2021-08-05', '13', 'Desparacitacion', '5960');
+
+INSERT INTO `historial` (`id_historial`, `fecha`, `id_Perro`, `descripcion`, `monto`) VALUES (NULL, '2021-11-18', '13', 'Analisis', '23000');
+
+INSERT INTO `historial` (`id_historial`, `fecha`, `id_Perro`, `descripcion`, `monto`) VALUES (NULL, '2022-01-12', '13', 'Revision', '1000');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
