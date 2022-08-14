@@ -1,3 +1,5 @@
+Scripts de la base de datos 
+
 Creo la clave foranea en la tabla Perro, en relacion a la tabla dueño
 
 ALTER TABLE `perro` ADD CONSTRAINT `duenio_perro` FOREIGN KEY (`DNI_dueno`) REFERENCES `dueno`(`DNI`) ON DELETE RESTRICT ON UPDATE RESTRICT;
