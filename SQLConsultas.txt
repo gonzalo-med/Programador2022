@@ -1,5 +1,8 @@
 Scripts de la base de datos 
 
+
+Realice la consulta correspondiente para crear la tabla Perro, teniendo en cuenta sus claves foráneas y primarias.
+
 Creo la clave foranea en la tabla Perro, en relacion a la tabla dueño
 
 ALTER TABLE `perro` ADD CONSTRAINT `duenio_perro` FOREIGN KEY (`DNI_dueno`) REFERENCES `dueno`(`DNI`) ON DELETE RESTRICT ON UPDATE RESTRICT;
@@ -7,7 +10,6 @@ ALTER TABLE `perro` ADD CONSTRAINT `duenio_perro` FOREIGN KEY (`DNI_dueno`) REFE
 Creo la clave foranea en la tabla Historial, en relacion a la tabla perro:
 
 ALTER TABLE `historial` ADD CONSTRAINT `perro_historial` FOREIGN KEY (`id_Perro`) REFERENCES `perro`(`ID_Perro`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
 
 1) Inserto el la tabla dueno, los datos del punto 1:
 
@@ -17,6 +19,9 @@ Realizo la consulta: Si el DNI es mayor a 26000000, muestro el telefono:
 
 SELECT Telefono FROM `dueno` WHERE DNI > 26000000;
 
+
+
+Inserte en la tabla correspondiente un nuevo animal (perro) como paciente y el dueño asociado a ese animal.
 
 2) Inserto el la tabla dueno, los datos del punto 2:
 
@@ -63,23 +68,82 @@ INSERT INTO `historial` (`id_historial`, `fecha`, `id_Perro`, `descripcion`, `mo
 INSERT INTO `historial` (`id_historial`, `fecha`, `id_Perro`, `descripcion`, `monto`) VALUES (NULL, '2022-01-12', '13', 'Revision', '1000');
 
 
+6)Inserto en la tabla los datos del punto 6:
+
+INSERT INTO `perro` (`ID_Perro`, `Nombre`, `Fecha_nac`, `Sexo`, `DNI_dueno`) VALUES (NULL, 'Frida', '2012-02-20', 'Hembra', '34654613');
+
+INSERT INTO `historial` (`id_historial`, `fecha`, `id_Perro`, `descripcion`, `monto`) VALUES (NULL, '2013-08-12', '15', 'Desparacitacion 1 año', '23500');
+
+INSERT INTO `historial` (`id_historial`, `fecha`, `id_Perro`, `descripcion`, `monto`) VALUES (NULL, '2015-08-11', '15', 'Consulta medica', '5960');
+
+INSERT INTO `historial` (`id_historial`, `fecha`, `id_Perro`, `descripcion`, `monto`) VALUES (NULL, '2016-12-23', '15', 'Baño y corte', '2300');
+
+INSERT INTO `historial` (`id_historial`, `fecha`, `id_Perro`, `descripcion`, `monto`) VALUES (NULL, '2017-05-23', '15', 'Control', '8900');
+
+INSERT INTO `historial` (`id_historial`, `fecha`, `id_Perro`, `descripcion`, `monto`) VALUES (NULL, '2018-03-11', '15', 'Ecografia', '8900');
+
+cuente cuantos gastos fueron superiores a 5000 :
+
+SELECT COUNT(id_historial) FROM `historial` WHERE id_Perro = 15 AND monto > 5000;
+
+
+8)Inserto en la tabla los datos del punto 8:
+
+INSERT INTO `perro` (`ID_Perro`, `Nombre`, `Fecha_nac`, `Sexo`, `DNI_dueno`) VALUES (NULL, 'Olivia', '2013-02-20', 'Hembra', '28957346');
+
+INSERT INTO `historial` (`id_historial`, `fecha`, `id_Perro`, `descripcion`, `monto`) VALUES (NULL, '2014-04-13', '16', 'Baño y desparacitacion', '7510');
+
+INSERT INTO `historial` (`id_historial`, `fecha`, `id_Perro`, `descripcion`, `monto`) VALUES (NULL, '2015-04-13', '16', 'Castracion', '7960');
+
+INSERT INTO `historial` (`id_historial`, `fecha`, `id_Perro`, `descripcion`, `monto`) VALUES (NULL, '2016-08-28', '16', 'Operacion tumor', '76180');
+
+INSERT INTO `historial` (`id_historial`, `fecha`, `id_Perro`, `descripcion`, `monto`) VALUES (NULL, '2016-09-15', '16', 'Consulta postoperatorio', '800');
+
+valor mínimo de atención gastada en “Olivia”:
+
+SELECT MIN(monto) FROM `historial` WHERE id_Perro = 16;
+
+9)Inserto en la tabla los datos del punto 9:
+
+INSERT INTO `perro` (`ID_Perro`, `Nombre`, `Fecha_nac`, `Sexo`, `DNI_dueno`) VALUES (NULL, 'Toto', '2017-08-07', 'Macho', '26544219');
+
+INSERT INTO `historial` (`id_historial`, `fecha`, `id_Perro`, `descripcion`, `monto`) VALUES (NULL, '2018-06-01', '17', 'Control', '8520');
+
+INSERT INTO `historial` (`id_historial`, `fecha`, `id_Perro`, `descripcion`, `monto`) VALUES (NULL, '2019-08-23', '17', 'Baño', '9510');
+
+INSERT INTO `historial` (`id_historial`, `fecha`, `id_Perro`, `descripcion`, `monto`) VALUES (NULL, '2020-04-15', '17', 'Desparacitacion', ' 7530');
+
+INSERT INTO `historial` (`id_historial`, `fecha`, `id_Perro`, `descripcion`, `monto`) VALUES (NULL, '2021-09-14', '17', 'Castracion', '3570');
+
+INSERT INTO `historial` (`id_historial`, `fecha`, `id_Perro`, `descripcion`, `monto`) VALUES (NULL, '2022-08-02', '17', 'Corte uñas', '1590');
+
+valor máximo de atención gastada en “Toto”:
+
+SELECT MAX(monto) FROM `historial` WHERE id_Perro = 17;
+
+10)dueños de perros Ordenarla alfabéticamente:
+
+SELECT nombre FROM `dueno` ORDER BY `Nombre` ASC;
 
 
 
 
 
+Actualice la fecha de nacimiento de algún animal (perro) que usted considere.
+
+UPDATE `perro` SET `Fecha_nac` = '2012-12-06' WHERE `perro`.`ID_Perro` = 14;
 
 
+Realice una consulta multitabla que arroje el nombre de todos los perros cuyos dueños se llaman Pedro
+
+SELECT Nombre from perro inner join dueno on dueno.Nombre='Pedro';
 
 
+Insertar un nuevo registro en la tabla historial de un perro cuyo ID Perro es igual a 17.
+
+INSERT INTO `historial` (`id_historial`, `fecha`, `id_Perro`, `descripcion`, `monto`) VALUES (NULL, '2022-08-01', '17', 'Limpieza dental', '9600');
 
 
+Escriba una consulta que permita actualizar la dirección de un dueño. Su nueva dirección es Libertad 123:
 
-
-
-
-
-
-
-
-
+UPDATE `dueno` SET `Direccion` = 'Libertad 123' WHERE `dueno`.`DNI` = 34956159;
